@@ -24,42 +24,32 @@ def initialize():
     """Create the database and the tables."""
     db.connect()
     db.create_tables([Product], safe = True)
+
+
+def read_csv ():
     with open('inventory.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         product_dicts = list(reader)
         for product in product_dicts:
-            print(product)
             Product.create(
-                product_name = product['product_name']
-            )
-
-
+                product_name = product['product_name'])
 
 
 def menu():
     """Displays menu options"""
-
-
-
-
-
-
-
-
+    pass
 
 def display_product():
     """Displays products by its product_id"""
-
-
-
-
-
+    pass
 
 def add_product():
     """Adds product to the database"""
+    pass
 
 def backup():
     """Creates a backup database"""
+    pass
 
 menu = OrderedDict ([
         ('v', 'display_product'),
@@ -69,4 +59,4 @@ menu = OrderedDict ([
 
 if __name__ == '__main__':
     initialize()
-    # display_product()
+    read_csv()
