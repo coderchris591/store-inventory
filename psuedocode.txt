@@ -1,0 +1,27 @@
+List = [
+{
+product: asdf
+price: 234
+quantity: 34
+date_updated: 34/34/34
+},
+ {
+ product: asdf
+ price: 234
+ quantity: 34
+ date_updated: 34/34/34
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
