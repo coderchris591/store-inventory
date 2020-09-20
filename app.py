@@ -2,6 +2,7 @@ from collections import OrderedDict
 from peewee import *
 import csv
 import datetime
+import re
 
 db = SqliteDatabase("inventory.db")
 
@@ -31,9 +32,22 @@ def read_csv ():
         reader = csv.DictReader(csvfile)
         product_dicts = list(reader)
         for product in product_dicts:
+            # try:
             Product.create(
-                product_name = product['product_name'])
-
+                            product_name = product['product_name'],
+                            product_quantity = product['product_quantity'],
+                            product_price = product['product_price'],
+                            date_updated = product['date_updated']
+                            ).save()
+            # except OperationalError as e:
+            #     pass
+def clean_prices(prices):
+    cleaned_prices = []
+    for price in prices:
+        price = price.replace('$', "0")
+        cents = int(float(price) * 100)
+        cleaned_prices.append(cents)
+    return cleaned_prices
 
 def menu():
     """Displays menu options"""
